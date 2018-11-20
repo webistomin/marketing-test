@@ -2,6 +2,8 @@
   <div id="app">
     <page-header></page-header>
     <router-view></router-view>
+    <div class="cloud cloud--first"></div>
+    <div class="cloud cloud--second"></div>
   </div>
 </template>
 
@@ -17,6 +19,33 @@
 </script>
 
 <style lang="sass">
+  #app
+    position: relative
+    overflow-x: hidden
+
+  @keyframes clouds
+    100%
+      left: -200px
+
+  .cloud
+    position: absolute
+    z-index: -1
+    left: 100%
+
+    &--first
+      width: 151px
+      height: 32px
+      top: 71px
+      animation: clouds 15s linear infinite
+      background-image: url("../static/img/cloud-1.svg")
+
+    &--second
+      width: 103px
+      height: 22px
+      top: 289px
+      animation: clouds 20s linear infinite
+      background-image: url("../static/img/cloud-2.svg")
+
   html
     font-family: "Open Sans", Arial, Helvetica, sans-serif
 
@@ -30,6 +59,7 @@
     -webkit-tap-highlight-color: transparent
     -webkit-appearance: none
     -webkit-overflow-scrolling: touch
+    position: relative
 
   img
     max-width: 100%
