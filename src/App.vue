@@ -4,6 +4,10 @@
     <router-view></router-view>
     <div class="cloud cloud--first"></div>
     <div class="cloud cloud--second"></div>
+    <div class="cloud cloud--third"></div>
+    <div class="cloud cloud--fourth"></div>
+    <div class="cloud cloud--fifth"></div>
+    <div class="cloud cloud--sixth"></div>
   </div>
 </template>
 
@@ -20,6 +24,7 @@
 
 <style lang="sass">
   #app
+    min-height: inherit
     position: relative
     overflow-x: hidden
 
@@ -45,6 +50,34 @@
       top: 289px
       animation: clouds 20s linear infinite
       background-image: url("../static/img/cloud-2.svg")
+
+    &--third
+      width: 40px
+      height: 12px
+      top: 222px
+      animation: clouds 10s linear infinite
+      background-image: url("../static/img/cloud-3.svg")
+
+    &--fourth
+      width: 75px
+      height: 18px
+      top: 328px
+      animation: clouds 13s linear infinite
+      background-image: url("../static/img/cloud-4.svg")
+
+    &--fifth
+      width: 60px
+      height: 18px
+      top: 586px
+      animation: clouds 11s linear infinite
+      background-image: url("../static/img/cloud-5.svg")
+
+    &--sixth
+      width: 111px
+      height: 27px
+      top: 559px
+      animation: clouds 9s linear infinite
+      background-image: url("../static/img/cloud-6.svg")
 
   html
     font-family: "Open Sans", Arial, Helvetica, sans-serif
