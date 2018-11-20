@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <page-header></page-header>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+  import PageHeader from './components/PageHeader';
+
   export default {
     name: 'app',
+    components: {
+      PageHeader,
+    },
   };
 </script>
 
@@ -16,7 +22,7 @@
 
   body
     margin: 0
-    height: 100vh
+    min-height: 100vh
     background-color: #cd718e
     box-sizing: border-box
     font-weight: 400

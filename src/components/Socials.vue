@@ -43,7 +43,7 @@
     display: flex
     align-items: center
     justify-content: center
-    padding-top: 66px
+    padding-top: 23px
     counter-reset: counter
 
     &__title
@@ -115,7 +115,8 @@
         background-color: #eb722e
         background-image: url("../../static/img/icon-ok.svg")
 
-      &:hover
+      &:hover,
+      &:focus
         -webkit-transition: background-image 0.2s ease-in-out
         transition: background-image 0.2s ease-in-out
         background-image: url("../../static/img/icon-heart.svg")
@@ -158,9 +159,41 @@
         background-color: #ffffff
         color: #7f4156
 
-      &:hover
+      &:hover,
+      &:focus
         color: #ffffff
         border-color: #7f4156
         background-color: #7f4156
+
+    @media (min-width: 660px)
+      &__title
+        font-size: 50px
+        margin-bottom: 36px
+
+      &__inner
+        align-items: flex-start
+
+      &__item
+        margin-right: 29px
+
+      &__text
+        font-size: 18px
+
+        &--counter
+          &::before
+            font-family: Shnobel, Arial, sans-serif
+            font-size: 44px
+            font-weight: 400
+            left: -52px
+            top: -10px
+
+      &__input
+        width: 302px
+        margin-bottom: 40px
+
+      &__btn
+        width: 230px
+        height: 70px
+        margin: 0 auto
 
 </style>
