@@ -4,14 +4,20 @@
     <div class="container socials__container">
       <h2 class="socials__title">Чтобы выиграть <br class="socials__break"> путешествие</h2>
       <div class="socials__inner">
-        <p class="socials__text socials__text--counter">Поделитесь с друзьями</p>
+        <p class="socials__text socials__text--counter"
+           :class="{'socials__text--done': isShared}"
+           @click="changeSocialsShare">
+          Поделитесь с друзьями:
+        </p>
         <social-sharing url="https://github.com/webistomin/marketing-test"
                         title="Тестовое задание от Aviasales"
                         description="Выиграй путешествие от Aviasales"
                         quote="Давай узнаем, кто из кандидатов прислал тебе валентинку"
                         hashtags="aviasales"
                         twitter-user="vuejs"
-                        inline-template>
+                        inline-template
+                        @close="popupOpened()"
+                        :class="{'socials__list--disabled': isShared}">
           <ul class="socials__list">
             <li class="socials__item">
               <network network="vk">
@@ -37,10 +43,20 @@
         </social-sharing>
       </div>
       <div class="socials__inner">
-        <label class="socials__text socials__text--counter" for="email">Оставь почту</label>
+        <label class="socials__text socials__text--counter"
+               :class="{'socials__text--done': isEmailValid}"
+               @click="changeEmail"
+               for="email">Оставь почту:</label>
         <form action="#" class="socials__form">
-          <input type="email" class="socials__input" id="email">
-          <button class="socials__btn socials__btn--valid btn" type="submit">Отправить</button>
+          <input type="email" class="socials__input" id="email" @change="checkValidation"
+          :class="{'socials__input--disabled': isEmailValid}">
+          <button
+            class="socials__btn socials__btn--valid btn"
+            :class="{'socials__btn--invalid': isDisabled,
+            'socials__btn--valid': !isDisabled}"
+            type="submit">
+            Отправить
+          </button>
         </form>
       </div>
     </div>
@@ -50,6 +66,28 @@
 <script>
   export default {
     name: 'Socials',
+    data() {
+      return {
+        isDisabled: true,
+        isShared: false,
+        isEmailValid: false,
+      };
+    },
+    methods: {
+      popupOpened() {
+        this.isDisabled = false;
+        this.isShared = true;
+      },
+      changeSocialsShare() {
+        this.isShared = false;
+      },
+      changeEmail() {
+        this.isEmailValid = false;
+      },
+      checkValidation(event) {
+        this.isEmailValid = event.target.validity.valid;
+      },
+    },
   };
 </script>
 
@@ -79,9 +117,9 @@
       margin-bottom: 30px
 
     &__text
-      width: intrinsic;           /* Safari/WebKit uses a non-standard name */
-      width: -moz-max-content;    /* Firefox/Gecko */
-      width: -webkit-max-content; /* Chrome */
+      width: intrinsic     /* Safari/WebKit uses a non-standard name */
+      width: -moz-max-content  /* Firefox/Gecko */
+      width: -webkit-max-content /* Chrome */
       position: relative
       font-family: "Open Sans", Arial, sans-serif
       color: #ffffff
@@ -95,6 +133,24 @@
           position: absolute
           left: -20px
 
+      &--done
+        color: rgba(255, 255, 255, 0.5)
+        &::before
+          visibility: hidden
+        &::after
+          position: absolute
+          top: 0
+          left: -54px
+          width: 20px
+          height: 20px
+          content: ""
+          background-color: #7f4156
+          background-image: url("../../static/img/icon-check.svg")
+          background-position: center
+          background-repeat: no-repeat
+          cursor: pointer
+
+
     &__link
       display: block
       width: 100%
@@ -104,6 +160,10 @@
     &__list
       margin-top: 15px
       display: flex
+
+      &--disabled
+        opacity: 0.5
+        pointer-events: none
 
     &__item
       border-radius: 100px
@@ -156,6 +216,10 @@
       font-weight: 400
       font-size: 20px
       color: rgba(0, 0, 0, 0.8)
+
+      &--disabled
+        opacity: 0.5
+        pointer-events: none
 
     &__btn
       width: 260px
