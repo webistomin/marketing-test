@@ -1,23 +1,40 @@
 <template>
   <section class="socials">
+
     <div class="container socials__container">
       <h2 class="socials__title">Чтобы выиграть <br class="socials__break"> путешествие</h2>
       <div class="socials__inner">
         <p class="socials__text socials__text--counter">Поделитесь с друзьями</p>
-        <ul class="socials__list">
-          <li class="socials__item">
-            <a href="#" class="socials__link">Vkontakte</a>
-          </li>
-          <li class="socials__item">
-            <a href="#" class="socials__link">Facebook</a>
-          </li>
-          <li class="socials__item">
-            <a href="#" class="socials__link">Twitter</a>
-          </li>
-          <li class="socials__item">
-            <a href="#" class="socials__link">Odnoklassniki</a>
-          </li>
-        </ul>
+        <social-sharing url="https://github.com/webistomin/marketing-test"
+                        title="Тестовое задание от Aviasales"
+                        description="Выиграй путешествие от Aviasales"
+                        quote="Давай узнаем, кто из кандидатов прислал тебе валентинку"
+                        hashtags="aviasales"
+                        twitter-user="vuejs"
+                        inline-template>
+          <ul class="socials__list">
+            <li class="socials__item">
+              <network network="vk">
+                <a href="#" class="socials__link">Vkontakte</a>
+              </network>
+            </li>
+            <li class="socials__item">
+              <network network="facebook">
+                <a href="#" class="socials__link">Facebook</a>
+              </network>
+            </li>
+            <li class="socials__item">
+              <network network="twitter">
+                <a href="#" class="socials__link">Twitter</a>
+              </network>
+            </li>
+            <li class="socials__item">
+              <network network="odnoklassniki">
+                <a href="#" class="socials__link">Odnoklassniki</a>
+              </network>
+            </li>
+          </ul>
+        </social-sharing>
       </div>
       <div class="socials__inner">
         <label class="socials__text socials__text--counter" for="email">Оставь почту</label>
