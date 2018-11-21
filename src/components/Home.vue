@@ -1,13 +1,14 @@
 <template>
   <main class="page-content">
     <intro v-show="!isStarted" @isStarted="startPoll"></intro>
-    <socials v-show="isStarted"></socials>
+    <question v-show="isStarted"></question>
   </main>
 </template>
 
 <script>
   import Socials from './Socials';
   import Intro from './Intro';
+  import Question from './Question';
 
   export default {
     name: 'Home',
@@ -24,6 +25,7 @@
     components: {
       Socials,
       Intro,
+      Question,
     },
   };
 </script>
