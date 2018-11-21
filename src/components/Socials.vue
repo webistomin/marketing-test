@@ -51,9 +51,9 @@
           <input type="email" class="socials__input" id="email" @change="checkValidation"
           :class="{'socials__input--disabled': isEmailValid}">
           <button
-            class="socials__btn socials__btn--valid btn"
-            :class="{'socials__btn--invalid': isDisabled,
-            'socials__btn--valid': !isDisabled}"
+            class="socials__btn btn"
+            :class="{'socials__btn--invalid': !getFormValidation,
+            'socials__btn--valid': getFormValidation}"
             type="submit">
             Отправить
           </button>
@@ -75,7 +75,6 @@
     },
     methods: {
       popupOpened() {
-        this.isDisabled = false;
         this.isShared = true;
       },
       changeSocialsShare() {
@@ -86,6 +85,11 @@
       },
       checkValidation(event) {
         this.isEmailValid = event.target.validity.valid;
+      },
+    },
+    computed: {
+      getFormValidation() {
+        return this.isShared && this.isEmailValid;
       },
     },
   };
