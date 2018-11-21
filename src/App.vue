@@ -29,54 +29,59 @@
     overflow-x: hidden
 
   @keyframes clouds
+    0%
+      transform: translate3d(100vw,0,0)
+      to
+        transform: translateZ(0)
     100%
       left: -200px
 
   .cloud
     position: absolute
-    z-index: -1
+    z-index: -2
     left: 100%
 
     &--first
       width: 151px
       height: 32px
       top: 71px
-      animation: clouds 45s linear infinite
+      left: 10px
+      animation: clouds 10s linear infinite
       background-image: url("../static/img/cloud-1.svg")
 
     &--second
       width: 103px
       height: 22px
       top: 289px
-      animation: clouds 40s linear infinite
+      animation: clouds 9s linear infinite
       background-image: url("../static/img/cloud-2.svg")
 
     &--third
       width: 40px
       height: 12px
       top: 222px
-      animation: clouds 35s linear infinite
+      animation: clouds 13s linear infinite
       background-image: url("../static/img/cloud-3.svg")
 
     &--fourth
       width: 75px
       height: 18px
       top: 328px
-      animation: clouds 38s linear infinite
+      animation: clouds 10s linear infinite
       background-image: url("../static/img/cloud-4.svg")
 
     &--fifth
       width: 60px
       height: 18px
       top: 586px
-      animation: clouds 30s linear infinite
+      animation: clouds 12s linear infinite
       background-image: url("../static/img/cloud-5.svg")
 
     &--sixth
       width: 111px
       height: 27px
       top: 559px
-      animation: clouds 50s linear infinite
+      animation: clouds 15s linear infinite
       background-image: url("../static/img/cloud-6.svg")
 
   html

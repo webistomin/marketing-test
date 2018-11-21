@@ -97,6 +97,11 @@
 
 <style lang="sass">
   @import "../assets/style"
+  @keyframes scale
+    0%
+      transform: scale(1)
+    100%
+      transform: scale(1.2)
 
   .socials
     display: flex
@@ -177,21 +182,29 @@
       background-repeat: no-repeat
       background-position: center
       -webkit-transition: background-image 0.2s ease-in-out
-        transition: background-image 0.2s ease-in-out
+      transition: background-image 0.2s ease-in-out
+      animation: scale 1s infinite alternate
+      animation-iteration-count: 2
+
 
       &:first-child
         background-color: #45668e
         background-image: url("../../static/img/icon-vk.svg")
+        animation-delay: 0s
+
 
       &:nth-child(2)
+        animation-delay: 5s
         background-color: #3b5998
         background-image: url("../../static/img/icon-fb.svg")
 
       &:nth-child(3)
+        animation-delay: 10s
         background-color: #00aced
         background-image: url("../../static/img/icon-twitter.svg")
 
       &:last-child
+        animation-delay: 15s
         margin-right: 0
         background-color: #eb722e
         background-image: url("../../static/img/icon-ok.svg")
