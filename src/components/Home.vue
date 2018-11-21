@@ -1,12 +1,11 @@
 <template>
   <main class="page-content">
     <intro v-show="!isStarted" @isStarted="startPoll"></intro>
-    <question v-show="isStarted"></question>
+    <question v-show="isStarted" @isFinished="endPoll"></question>
   </main>
 </template>
 
 <script>
-  import Socials from './Socials';
   import Intro from './Intro';
   import Question from './Question';
 
@@ -21,9 +20,11 @@
       startPoll() {
         this.isStarted = true;
       },
+      endPoll() {
+        this.isStarted = false;
+      },
     },
     components: {
-      Socials,
       Intro,
       Question,
     },

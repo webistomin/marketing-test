@@ -58,11 +58,15 @@ export default {
       },
     ],
     currentPage: 0,
+    results: [],
   },
   mutations: {
     setCurrentPage(state) {
       // eslint-disable-next-line no-param-reassign
       state.currentPage += 1;
+    },
+    setResult(state, payload) {
+      state.results.push(payload);
     },
   },
   getters: {
@@ -71,6 +75,9 @@ export default {
     },
     getCurrentPage(state) {
       return state.currentPage;
+    },
+    getResults(state) {
+      return state.results;
     },
   },
 };

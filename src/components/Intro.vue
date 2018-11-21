@@ -22,7 +22,7 @@
     name: 'Intro',
     methods: {
       setStart() {
-        this.$emit('isStarted', true);
+        this.$emit('isStarted');
       },
     },
   };

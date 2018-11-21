@@ -1,6 +1,5 @@
 <template>
   <section class="socials">
-
     <div class="container socials__container">
       <h2 class="socials__title">Чтобы выиграть <br class="socials__break"> путешествие</h2>
       <div class="socials__inner">

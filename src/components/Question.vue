@@ -19,12 +19,19 @@
         </div>
         <div class="question__block">
           <span class="question__question">
-            {{getQuestion[getCurrentPage].questionTitle}}
+            {{getQuestions[getCurrentPage].questionTitle}}
           </span>
           <div class="question__inputs">
-            <div class="question__row" v-for="question of getQuestion[getCurrentPage].questionValues">
-              <input type="radio" id="one" value="Один" class="question__input" @click="$store.commit('setCurrentPage')">
-              <label for="one" class="question__label">{{question}}</label>
+            <div class="question__row"
+                 v-for="(question, index) of getQuestions[getCurrentPage].questionValues"
+                 :key="index">
+              <input type="radio" :id="'question-' + index"
+                     :value="index" class="question__input"
+                     @click="setCurrentPage($event)">
+              <label :for="'question-' + index"
+                     class="question__label">
+                {{question}}
+              </label>
             </div>
           </div>
         </div>
@@ -37,11 +44,26 @@
   export default {
     name: 'Question',
     computed: {
-      getQuestion() {
+      getQuestions() {
         return this.$store.getters.getQuestions;
       },
       getCurrentPage() {
         return this.$store.getters.getCurrentPage;
+      },
+      getResults() {
+        return this.$store.getters.getResults;
+      },
+    },
+    methods: {
+      setCurrentPage(event) {
+        const value = event.target.value;
+        this.$store.commit('setResult', value);
+        if (this.getResults.length === this.getQuestions.length) {
+          this.$emit('isFinished');
+          this.$router.push('/results');
+        } else {
+          this.$store.commit('setCurrentPage');
+        }
       },
     },
   };
@@ -112,10 +134,6 @@
       cursor: pointer
       height: 0
       width: 0
-
-      &:checked ~ .question__label
-        &::after
-          opacity: 1
 
     &__label
       display: block
