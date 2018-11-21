@@ -6,7 +6,7 @@
       <div class="question__inner">
         <div class="question__block question__block--margin">
           <span class="question__counter">
-            <span class="question__number">1</span>
+            <span class="question__number">{{getCurrentPage+1}}</span>
             <svg width="66px" height="73px" viewBox="0 0 66 73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="d_quest1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-355.000000, -274.000000)">
         <g id="Group-2" transform="translate(355.000000, 274.000000)" fill="#D3839C">
@@ -15,30 +15,16 @@
     </g>
 </svg>
           </span>
-          <img src="../../static/img/question-1.svg" alt="#" class="question__img" width="356" height="299">
+          <img :src="`./../static/img/question-${getCurrentPage+1}.svg`" alt="#" class="question__img" width="356" height="299">
         </div>
         <div class="question__block">
-          <span class="question__question">У вас мэтч! Где пройдёт свидание?</span>
+          <span class="question__question">
+            {{getQuestion[getCurrentPage].questionTitle}}
+          </span>
           <div class="question__inputs">
-            <div class="question__row">
-              <input type="radio" id="one" value="Один" class="question__input">
-              <label for="one" class="question__label">Один</label>
-            </div>
-            <div class="question__row">
-              <input type="radio" id="two" value="Один" class="question__input">
-              <label for="two" class="question__label">Два</label>
-            </div>
-            <div class="question__row">
-              <input type="radio" id="three" value="Один" class="question__input">
-              <label for="three" class="question__label">Два</label>
-            </div>
-            <div class="question__row">
-              <input type="radio" id="four" value="Один" class="question__input">
-              <label for="four" class="question__label">Два</label>
-            </div>
-            <div class="question__row">
-              <input type="radio" id="five" value="Один" class="question__input">
-              <label for="five" class="question__label">Два</label>
+            <div class="question__row" v-for="question of getQuestion[getCurrentPage].questionValues">
+              <input type="radio" id="one" value="Один" class="question__input" @click="$store.commit('setCurrentPage')">
+              <label for="one" class="question__label">{{question}}</label>
             </div>
           </div>
         </div>
@@ -53,6 +39,9 @@
     computed: {
       getQuestion() {
         return this.$store.getters.getQuestions;
+      },
+      getCurrentPage() {
+        return this.$store.getters.getCurrentPage;
       },
     },
   };
