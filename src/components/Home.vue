@@ -1,6 +1,8 @@
 <template>
-  <intro></intro>
-  <!--<socials></socials>-->
+  <main class="page-content">
+    <intro v-show="!isStarted" @isStarted="startPoll"></intro>
+    <socials v-show="isStarted"></socials>
+  </main>
 </template>
 
 <script>
@@ -9,6 +11,16 @@
 
   export default {
     name: 'Home',
+    data() {
+      return {
+        isStarted: false,
+      };
+    },
+    methods: {
+      startPoll() {
+        this.isStarted = true;
+      },
+    },
     components: {
       Socials,
       Intro,
