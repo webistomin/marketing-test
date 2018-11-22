@@ -1,4 +1,4 @@
-# Aviasales Marketing Test
+# Тестовое задание от Aviasales
 > Одностраничное приложения для проведения опроса с результирующим окном в конце 
 
 https://poll-aaff7.firebaseapp.com
