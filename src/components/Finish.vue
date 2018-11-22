@@ -4,8 +4,14 @@
       <h2 class="finish__title">
         <span class="finish__decor">выборы</span> <br>
         путешествие <br>
-        близко <br>
+        близко!<br>
       </h2>
+      <div class="cloud cloud--first"></div>
+      <div class="cloud cloud--second"></div>
+      <div class="cloud cloud--third"></div>
+      <div class="cloud cloud--fourth"></div>
+      <div class="cloud cloud--fifth"></div>
+      <div class="cloud cloud--sixth"></div>
     </section>
   </main>
 </template>
@@ -17,6 +23,14 @@
 </script>
 
 <style lang="sass">
+  @keyframes clouds
+    0%
+      transform: translate3d(100vw,0,0)
+      to
+        transform: translateZ(0)
+    100%
+      left: -200px
+
   .page-content
     display: flex
     align-items: center
@@ -74,5 +88,58 @@
       &__decor
         font-size: 35px
 
+    @media (min-width: 1140px)
+      &__title
+        font-size: 70px
+      &__decor
+        font-size: 50px
+
+  .cloud
+    position: absolute
+    z-index: -2
+    left: 100%
+
+    &--first
+      width: 151px
+      height: 32px
+      top: 2vh
+      left: 10px
+      animation: clouds 10s linear infinite
+      background-image: url("../../static/img/cloud-1.svg")
+
+    &--second
+      width: 103px
+      height: 22px
+      top: 16vh
+      animation: clouds 9s linear infinite
+      background-image: url("../../static/img/cloud-2.svg")
+
+    &--third
+      width: 40px
+      height: 12px
+      top: 19vh
+      animation: clouds 13s linear infinite
+      background-image: url("../../static/img/cloud-3.svg")
+
+    &--fourth
+      width: 75px
+      height: 18px
+      top: 25vh
+      animation: clouds 10s linear infinite
+      background-image: url("../../static/img/cloud-4.svg")
+
+    &--fifth
+      width: 60px
+      height: 18px
+      top: 51vh
+      animation: clouds 12s linear infinite
+      background-image: url("../../static/img/cloud-5.svg")
+
+    &--sixth
+      width: 111px
+      height: 27px
+      top: 79vh
+      animation: clouds 15s linear infinite
+      background-image: url("../../static/img/cloud-6.svg")
 
 </style>
