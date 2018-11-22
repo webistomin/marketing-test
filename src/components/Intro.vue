@@ -22,7 +22,7 @@
     name: 'Intro',
     methods: {
       setStart() {
-        this.$emit('isStarted');
+        this.$store.commit('setStartState', true);
       },
     },
   };
@@ -53,15 +53,16 @@
     display: flex
     justify-content: center
     align-items: center
-    min-height: calc(100vh - 48px)
     box-sizing: border-box
     position: relative
+    width: 100%
+    min-height: inherit
 
     &::after
       content: ""
       position: absolute
       bottom: 0
-      background-image: url(https://assets.hotellook.com/kandidat/layout/images/city.7f4d2.svg)
+      background-image: url("../../static/img/city.svg")
       background-size: auto 100%
       width: 100%
       height: 100px

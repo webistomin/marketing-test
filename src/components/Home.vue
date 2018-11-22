@@ -1,7 +1,7 @@
 <template>
   <main class="page-content">
-    <intro v-show="!isStarted" @isStarted="startPoll"></intro>
-    <question v-show="isStarted" @isFinished="endPoll"></question>
+    <intro v-show="!getStartedState"></intro>
+    <question v-show="getStartedState"></question>
   </main>
 </template>
 
@@ -11,17 +11,9 @@
 
   export default {
     name: 'Home',
-    data() {
-      return {
-        isStarted: false,
-      };
-    },
-    methods: {
-      startPoll() {
-        this.isStarted = true;
-      },
-      endPoll() {
-        this.isStarted = false;
+    computed: {
+      getStartedState() {
+        return this.$store.getters.getStartedState;
       },
     },
     components: {
@@ -31,6 +23,14 @@
   };
 </script>
 
-<style>
+<style lang="sass">
+  .page-content
+    display: flex
+    align-items: center
+    justify-content: center
+    min-height: calc(100vh - 48px)
+
+    @media (min-width: 660px)
+      min-height: calc(100vh - 44px)
 
 </style>

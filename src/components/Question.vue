@@ -59,7 +59,8 @@
         const value = event.target.value;
         this.$store.commit('setResult', value);
         if (this.getResults.length === this.getQuestions.length) {
-          this.$emit('isFinished');
+          this.$store.commit('setStartState', false);
+          this.$store.commit('setStartedPage');
           this.$router.push('/results');
         } else {
           this.$store.commit('setCurrentPage');
@@ -71,11 +72,15 @@
 
 <style lang="sass">
   .question
-    margin-top: 50px
+    padding-top: 40px
 
     &__counter
+      display: none
       position: absolute
       left: -100px
+
+    &__container
+      padding: 0 10px
 
     &__number
       font-family: Shnobel, Arial, sans-serif
@@ -106,6 +111,7 @@
 
     &__inner
       display: flex
+      flex-direction: column
       justify-content: center
       margin-top: 40px
 
@@ -113,9 +119,7 @@
       display: flex
       flex-direction: column
       position: relative
-
-      &--margin
-        margin-right: 40px
+      align-items: center
 
     &__inputs
       display: flex
@@ -172,5 +176,18 @@
         &::after
           opacity: 1
           transition: all 0.3s ease-in-out
+
+    @media (min-width: 1140px)
+      padding-top: 0
+      &__counter
+        display: block
+      &__inner
+        flex-direction: row
+      &__container
+        padding: 0
+      &__block
+        align-items: flex-start
+        &--margin
+          margin-right: 40px
 
 </style>

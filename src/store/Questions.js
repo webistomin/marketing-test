@@ -65,8 +65,16 @@ export default {
       // eslint-disable-next-line no-param-reassign
       state.currentPage += 1;
     },
+    setStartedPage(state) {
+      // eslint-disable-next-line no-param-reassign
+      state.currentPage = 0;
+    },
     setResult(state, payload) {
       state.results.push(payload);
+    },
+    clearResults(state) {
+      // eslint-disable-next-line no-param-reassign
+      state.results = [];
     },
   },
   getters: {

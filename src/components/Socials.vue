@@ -46,7 +46,7 @@
                :class="{'socials__text--done': isEmailValid}"
                @click="changeEmail"
                for="email">Оставь почту:</label>
-        <form action="#" class="socials__form">
+        <form action="#" class="socials__form" @submit.prevent="finishPoll">
           <input type="email" class="socials__input" id="email" @change="checkValidation"
           :class="{'socials__input--disabled': isEmailValid}">
           <button
@@ -85,6 +85,11 @@
       checkValidation(event) {
         this.isEmailValid = event.target.validity.valid;
       },
+      finishPoll() {
+        this.$router.push('/finish');
+        this.$store.commit('setStartedPage');
+        this.$store.commit('clearResults');
+      },
     },
     computed: {
       getFormValidation() {
@@ -106,7 +111,6 @@
     display: flex
     align-items: center
     justify-content: center
-    padding-top: 23px
     counter-reset: counter
 
     &__title
